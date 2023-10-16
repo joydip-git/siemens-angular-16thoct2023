@@ -1,20 +1,9 @@
-var x: number = 10
-console.log(x, typeof x)
-
-var y = 'siemens'
-console.log(y, typeof y)
-
-var z = false
-console.log(z, typeof z)
-
-//1. object literal syntax
+//1. object-literal syntax
+/*
 var trainerObj = {
-    //value property
     trainerName: 'joydip',
     id: 1,
     subject: 'Angular',
-
-    //functional property
     show: function () {
         return `
             Name:${this.trainerName},
@@ -23,32 +12,94 @@ var trainerObj = {
         `
     }
 }
-
-//dot operator
-console.log(trainerObj.trainerName)
-//indexer
-console.log(trainerObj['subject'])
-console.log(trainerObj.show())
-console.log(trainerObj['show']())
-
-//JS obejcts are dynamically expandable
-//trainerObj.location = 'Bangalore'
-trainerObj['location'] = 'Bangalore'
-trainerObj['salary'] = 2000
-
-console.log(trainerObj, typeof trainerObj)
-
-for (var propName in trainerObj) {
-    console.log(`${propName}:${trainerObj[propName]}`)
+*/
+//2. constructor function
+/*
+function trainer(name: string, id: number, subject: string) {
+    this.trainerName = name
+    this.trainerId = id
+    this.trainerSubject = subject
+    this.show = function () {
+        return `
+            Name:${this.trainerName},
+            Id:${this.trainerId}, 
+            Subject:${this.trainerSubject}
+        `
+    }
 }
 
-//functions in JS
-function add(a: number, b: number): number {
-    return a + b
+const joydipTrainer = new trainer('joydip', 1, 'Angular')
+*/
+
+//3. class, constructor, extends and super keywords
+
+class Person {
+    _name: string;
+    _id: number;
+    constructor(_name: string, _id: number) {
+        this._name = _name
+        this._id = _id
+    }
+    show(): string {
+        return `${this._name}, ${this._id}`
+    }
+}
+class Trainee extends Person {
+
+    _project: string;
+    constructor(_name: string, _id: number, _project: string) {
+        super(_name, _id)
+        this._project = _project
+    }
+    show(): string {
+        return `${super.show()}, ${this._project}`
+    }
+}
+class Trainer extends Person {
+    //all memnbers are by default public
+
+    /*
+    private _trainerName: string;
+    private _trainerId: number;
+    private _trainerSubject: string;
+
+    constructor(_trainerName: string, _trainerId: number, _trainerSubject: string) {
+        this._trainerName = _trainerName
+        this._trainerId = _trainerId
+        this._trainerSubject = _trainerSubject
+    }*/
+
+    constructor(_name: string, _id: number, public _trainerSubject: string) {
+        super(_name, _id)
+    }
+
+    /*
+    get trainerName() {
+        return this._trainerName
+    }
+    set trainerName(value: string) {
+        this._trainerName = value
+    }
+    get trainerId() {
+        return this._trainerId
+    }
+    set trainerId(value: number) {
+        this._trainerId = value
+    }
+    get trainerSubject() {
+        return this._trainerSubject
+    }
+    set trainerSubject(value: string) {
+        this._trainerSubject = value
+    }
+    */
+    show() {
+        return `${this.show()}, ${this._trainerSubject}`
+    }
 }
 
-var data = 12
-//data = 'joydip'
+const anilTrainer = new Trainer("Anil", 2, 'React JS')
+console.log(anilTrainer._name)
+anilTrainer._trainerSubject = 'Node JS'
 
-
-
+console.log(anilTrainer.show())
