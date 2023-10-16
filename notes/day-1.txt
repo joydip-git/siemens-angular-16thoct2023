@@ -1,1 +1,15 @@
 https://github.com/joydip-git/siemens-angular-16thoct2023
+
+HTML, CSS
+JavaScript and its new features
+TypeScript
+Node JS
+
+JavaScript:
+data types: number, string, boolean, object
+null, NaN, undefined, Infinity
+
+'' or " "
+no strict data typing
+
+var, let and const
