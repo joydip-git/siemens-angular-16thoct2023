@@ -1,12 +1,12 @@
-hr.js
+hr.ts
 Hr => name, id, basicPay, daPay, hraPay, gratuityPay
 		calculateSalary() => number
 
-developer.js
+developer.ts
 Developer => name, id, basicPay, daPay, hraPay, incentivePay
 		calculateSalary() => number
 
-index.js
+index.ts
 	create an array to store employees
 	create some employee objects and save them in that array
 	iterate through the array and calculate salary of every employee and print the same
@@ -14,4 +14,4 @@ index.js
 	filter those employees from the array whose salary is more than 10000
 	sort the employees based on ascending order of the names
 
-	Note: do not use built-in function "filter" of array in JS/TS
+	Note: do not use built-in function "filter" and "sort()" of array in JS/TS
