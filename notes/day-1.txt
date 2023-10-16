@@ -41,6 +41,43 @@ b. using "tsc" tool
 	2. >npm .\node_modules\.bin\tsc --init (when TSC is locally installed)
 
 
+modules in JS/TS:
+
+different module formats:
+a. ES6 module format
+	1.js
+	export function func(){}
+
+	2.js
+	import {func} from './1'
+
+b. common js format
+	
+	1.js
+	function func(){}
+	module.exports = { prop-name : func}
+
+	2.js
+	var {func} = require('./1')
+
+c. asynchronous module (AMD) definition format
+	define([], function(){
+		function func(){}
+	})
+	
+d. universal module (UMD) definition format
+
+module loaders: which understands the module format and resolves the internal dependencies and load the files in runtime (node, deno, browser etc.)
+
+node js runtime has a module loader s/w, which understands the common js format by default (common js module loader)
+browser DO NOT have any built-in module loader s/w
+solution: supply module loader s/w with your application to the browser
+examples: requirejs, systemjs etc.
+requirejs understands ONLY AMD format
+
+
+
+JSON format:
 {
     //value property
     trainerName: 'joydip',
@@ -71,6 +108,8 @@ b. using "tsc" tool
 
 var x = 10
 { "x": 10 }
+
+
 
 
 

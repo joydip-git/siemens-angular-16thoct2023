@@ -1,0 +1,13 @@
+{
+  "name": "payroll-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "tsc-watch": "tsc --watch"
+  },
+  "author": "joydip",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
