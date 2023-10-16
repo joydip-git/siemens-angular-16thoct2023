@@ -94,7 +94,7 @@ class Trainer extends Person {
     }
     */
     show() {
-        return `${this.show()}, ${this._trainerSubject}`
+        return `${super.show()}, ${this._trainerSubject}`
     }
 }
 
