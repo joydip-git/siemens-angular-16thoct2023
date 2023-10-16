@@ -1,0 +1,13 @@
+{
+  "name": "js-ts-app",
+  "version": "1.0.0",
+  "description": "simple TS app",
+  "scripts": {
+    "tsc-watch": "tsc --watch"
+  },
+  "author": "joydip",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

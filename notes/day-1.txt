@@ -13,3 +13,64 @@ null, NaN, undefined, Infinity
 no strict data typing
 
 var, let and const
+
+
+application might be dependent on several packages (other libraries)
+maintain a list of dependencies for your application through a file, package.json. this file must be placed at the root fo your application directory
+create package.json file:
+a. manually
+b. use NPM (Node Package Manager) tool to create
+	command: >npm init or >npm init --yes 
+
+package installation
+a. globally (in this path: C:\Users\<user-name>\AppData\Roaming\npm)
+b. locally (in the application)
+
+
+Typescript installation command:
+local to an application: >npm i -D typescript
+global to all application: >npm i typescript --global
+
+configuration file for typescript transpiler:
+name: tsconfig.json
+placement: at the root of the application directory
+create tsconfig.json file:
+a. manually and
+b. using "tsc" tool 
+	1. >npm tsc --init (when TSC is globally installed)
+	2. >npm .\node_modules\.bin\tsc --init (when TSC is locally installed)
+
+
+{
+    //value property
+    trainerName: 'joydip',
+    id: 1,
+    subject: 'Angular',
+
+    //functional property
+    show: function () {
+        return `
+            Name:${this.trainerName},
+            Id:${this.id}, 
+            Subject:${this.subject}
+        `
+    }
+}
+
+{
+    //value property
+    "trainerName": "joydip",
+     "id": 1,
+     "subject": "Angular",
+	  "isTrainer":true,
+	  "address":{
+			"city":"Bangalore",
+			"pincode":560100
+		}
+}
+
+var x = 10
+{ "x": 10 }
+
+
+
