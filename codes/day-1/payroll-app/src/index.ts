@@ -12,7 +12,20 @@ const pavanHr = new Hr(4, "pavan", 2000, 3000, 4000, 5000)
 
 employees.push(anilDeveloper, sunilDeveloper, vinodHr, pavanHr)
 
-for (let index = 0; index < employees.length; index++) {
-    const emp = employees[index];
-    console.log(`${emp.name} got salary of ${emp.calculateSalary()}`)
-}
+// for (let index = 0; index < employees.length; index++) {
+//     const emp = employees[index];
+//     console.log(`${emp.name} got salary of ${emp.calculateSalary()}`)
+// }
+employees
+    .sort(
+        function (e1: Employee, e2: Employee) {
+            return e1
+                .name
+                .toLocaleLowerCase()
+                .localeCompare(e2.name.toLocaleLowerCase())
+        }
+    )
+    .filter((e: Employee) => e.calculateSalary() > 10000)
+    .forEach(
+        (e: Employee) => console.log(`${e.name} got salary of ${e.calculateSalary()}`)
+    )
