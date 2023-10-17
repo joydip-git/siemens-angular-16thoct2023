@@ -1,0 +1,25 @@
+<form (submit)="submit()" [formGroup]="loginFrm">
+    <div>
+        <label for="txtUserName">UserName: &nbsp; </label>
+        <!-- <input type="text" id="txtUserName" [formControl]="userName"> -->
+        <input type="text" id="txtUserName" formControlName="userName">
+    </div>
+    <div *ngIf="userName?.errors">
+        <div *ngIf="userName?.errors?.['required'] && (userName?.touched || userName?.dirty)">
+            <span>please enter user name</span>
+        </div>
+    </div>
+    <div>
+        <label for="txtPassword">Password: &nbsp; </label>
+        <!-- <input type="password" id="txtPassword" [formControl]="password"> -->
+        <input type="password" id="txtPassword" formControlName="password">
+    </div>
+    <div *ngIf="password?.errors">
+        <div *ngIf="password?.errors?.['required'] && (password?.touched || password?.dirty)">
+            <span>please enter password</span>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Login" [disabled]="!loginFrm.valid">
+    </div>
+</form>

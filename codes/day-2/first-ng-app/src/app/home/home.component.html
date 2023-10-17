@@ -1,3 +1,30 @@
 <p>
-    Home page
+    Calculation page
 </p>
+<br>
+<form ngForm #frm="ngForm">
+    <div>
+        <label for="txtFirst">
+            First: &nbsp;
+        </label>
+        <!-- <input type="number" id="txtFirst" [value]="firstValue" (keyup)="updateFirstValue(+firstTxt.value)" #firstTxt> -->
+        <input type="number" id="txtFirst" name="firstInput" [(ngModel)]="firstValue">
+    </div>
+    <div>
+        <label for="txtSecond">
+            Second: &nbsp;
+        </label>
+        <!-- <input type="number" id="txtSecond" [value]="secondValue" (keyup)="updateSecondValue(+secondTxt.value)" #secondTxt> -->
+        <input type="number" id="txtSecond" [(ngModel)]="secondValue" name="secondInput">
+    </div>
+    <div>
+        <input type="button" value="Add" (click)="submitValues(frm)">
+    </div>
+</form>
+
+<div>
+    <label for="txtResult">
+        Result: &nbsp;
+    </label>
+    <input type="number" id="txtResult" readonly [value]="result">
+</div>

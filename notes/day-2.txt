@@ -171,6 +171,110 @@ Hence those assets, need not be annotated with @Injectable(), whereas service cl
 export class SomeAsset{
 	constructor(private _svc:SomeService){}
 }
+
+
+Forms:
+modules: 
+	FormsModule: directives - ngModel, ngForm, service - FormBuilder
+	ReactiveFormsModule: fromGroup, formControl, formControlName directives
+package: @angular/forms => classes - FormControl, FormGroup etc.
+
+
+
+forms in angular:
+	a. template-driven approach (asynchronous): creation of FormGroup and FormControl from template (design/view) by using ngForm and ngModel directive from FormsModule
+
+	<form ngForm> <-- FormGroup
+		<input type='text/number/...' ngModel> <-- FormControl
+	</form>
+
+	b. reactive form approach (synchronous): creation of FormGroup and FormControl from code by using the classes directly and using formGroup and formControl/formControlName directive from ReaciveFormsModule in the design/view 
+
+	1.
+	firstInput = new FormConrtol(0)
+	secondInput = new FormConrtol(0)
+
+	<form>
+		<input type='text/number/...' [formControl]="firstInput"> <-- FormControl
+		<input type='text/number/...' [formControl]="secondInput"> <-- FormControl
+	</form>
+
+	2.
+	frm = new FormGroup({
+		firstInput: new FormConrtol(0)
+		secondInput: new FormConrtol(0)
+	})
+
+	<form [formGroup]="frm">
+		<input type='text/number/...' formControlName="firstInput"> <-- FormControl
+		<input type='text/number/...' formControlName="secondInput"> <-- FormControl
+	</form>
+
+	3.
+	frm:FormGroup;
+
+	constructor(private builder:FormBuilder){
+		this.frm = this.builder.group({
+						firstInput: [0]
+						secondInput: [0]
+					})
+	}
+
+	<form [formGroup]="frm">
+		<input type='text/number/...' formControlName="firstInput"> <-- FormControl
+		<input type='text/number/...' formControlName="secondInput"> <-- FormControl
+	</form>
+
+
+
+
+
+@Directive({selector:'[ngModel]'})
+export class NgModelDirective{
+	
+}
+
+@NgModule({declarations:[NgModelDirective], exports:[NgModelDirective]})
+export class FormsModule{}
+
+{
+	controls:{
+		firstInput:FormControl,
+		secondInput:FormControl,
+	}
+}
+
+
+Validation:
+	class => Validators.required. Validators.min,....
+
+	function required(control:AbstractControl):ValidationErrors|null{
+		const value = control.value
+		if(value.length ==''){
+			return {
+				"required":true
+			}
+		}
+
+		return null
+	}
+
+	interface ValidationErrors{
+		[propName:string]:any
+	}	
+
+
+directives:
+	a. attribute directive: they just extend the behavior of existing element
+		examples: ngForm, ngModel etc.
+	b. structual directive: they manipulate the structure/design/template
+		examples: *ngIf, *ngIfElse, *ngFor, *ngSwitch
+	c. component directive: components are actually one type of directive
+
+
+
+
+
 		
 
 
