@@ -1,0 +1,40 @@
+interface
+generic type
+new features - sprad operator, rest operator etc.
+
+interface IOperations{
+	add(a:number, b:number):number;
+}
+class Operations implements IOperations{
+	add(a:number, b:number):number{
+		return a+b
+	}
+}
+
+interface IPerson{
+	name:string;
+	id:number;
+	salary?:number;
+}
+
+class Person implements IPerson{
+	name:string;
+	id:number;
+	salary:number;
+	constructor(name:string, id:number, salary:number){
+		this.name = name
+		this.id = id
+		this.salary = salary
+	}
+}
+
+const personInfo:IPerson = {
+	id:1,
+	name:'anil',
+	salary:1000
+}
+
+const people:IPerson[]=[
+	{ id:1, name:'anil', salary:1000 },
+	{ id:2, name:'sunil', salary:2000 }
+]
