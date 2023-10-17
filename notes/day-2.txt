@@ -60,6 +60,101 @@ class Collection<T>{
 const numbers:Collection<number>=new Collection<number>()
 numbers.add(12)
 
+Angular:
+Angular CLI: tool to create angular application with boiler plate code, required dependencies etc.
+package name: @angular/cli
+command: >npm i @angular/cli --global
+
+1. It is a JS framework
+2. single threaded
+3. Client-side UI development framework
+4. Single Page Application (SPA)
+5. MV-* architecture
+6. Features:
+	a. data binding
+	b. form handling
+	c. service
+	d. routing (client-side routing)
+	e. data transformation (pipe)
+	f. directives to extend the behavior of an existing element or to manipulate DOM
+	g. components
+	h. dependency injection
+	i. change detection
+	etc.
+
+
+Component:
+
+	home (folder)
+		home.component.html => 
+				<h2>Welcome to Angular </h2>
+				<br>
+				<button (click)="fetchData(101)">Load Data</button> <-- event binding
+				<br>
+				{{ someData.name }} <-- interpolation (data binding)
+		home.component.css => h2{ background-color:'yellow'}
+		home.component.ts
+
+			import { Component } from '@angular/core'
+			//decorator function
+			@Component({
+				selector:'app-home',
+				templateUrl:'./home.component.html',
+				styleUrls:['./home.component.css']
+			}) 
+			export class HomeComponent{
+				private service:DataService;
+				someData:Person|undefined;
+
+				constructor(_service:DataService){
+					this.service = _service
+				}
+
+				fetchData(id:number){
+					this.someData = this.service.getData(id)
+				}
+			}
+
+	app (folder)
+		app.component.html => <app-home></app-home>
+		app.component.css => 
+		app.component.ts
+
+		import { Component } from '@angular/core'
+			//decorator function
+			@Component({
+				selector:'app-root',
+				templateUrl:'./app.component.html',
+				styleUrls:['./app.component.css']
+			}) 
+			export class AppComponent{
+				
+			}
+
+
+		index.html
+
+		<html>
+			<head>.....</head>
+			<body>
+				<app-root></app-root>
+			</body>
+		</html>
+
+		service class:
+
+		export class DataService{
+			getData(id:number):Person{
+				return {id:101, name:'anil', salary:1000}
+			}
+		}
+
+		export interface Person{ id:number, name:string, salary:number}
+		
+		
+
+
+
 
 
 
