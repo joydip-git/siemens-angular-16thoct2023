@@ -143,14 +143,34 @@ Component:
 
 		service class:
 
+		@Injectable()
 		export class DataService{
+			private otherSvc:OtherService;
+			constructor(_other:OtherService){
+				this.otherSvc = _other
+			}
 			getData(id:number):Person{
 				return {id:101, name:'anil', salary:1000}
 			}
 		}
 
 		export interface Person{ id:number, name:string, salary:number}
-		
+
+artifacts		decorator				example
+--------------------------------------------------------------------------------
+component		@Component({})			@Component({}) export class XComponent{}
+service			@Injectable({})		@Injectable({}) export class XService{}
+directive		@Directive({})			@Directive({}) export class XDirective{}
+pipe				@Pipe({})				@Pipe({}) export class XPipe{}
+module			@NgModule({})			@NgModule({}) export class XModule{}
+
+
+@Injectable() => needed as annotation at the top of any entity which demands DI of any service. Component, directive, pipe and module classes are already annotated with different decorators and those decorators have laredy implemented @Injectable()
+Hence those assets, need not be annotated with @Injectable(), whereas service class is not annotated with any decorator as such, hence the @Injectable() is required with service class
+
+export class SomeAsset{
+	constructor(private _svc:SomeService){}
+}
 		
 
 
