@@ -1,3 +1,7 @@
 <h2>Welcome to Angular Service</h2>
 <br><br>
-<app-post-list></app-post-list>
+
+<input type="button" (click)="updateShowPosts()" [value]="showPosts?'Hide':'Show'">
+<div *ngIf="showPosts">
+    <app-post-list></app-post-list>
+</div>

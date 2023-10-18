@@ -53,5 +53,54 @@ package: @angular/common/http
 module: HttpClientModule
 assets: service class => HttpClient
 
+RxJS:
+package: rxjs
+provides APIs for asynchronous programming
+APIs: 
+	Observable: collection of data or events and this object provides methods, such as, pipe() => data manipulation of Observable
+subscribe() => to subscribe to the observable object
+	Subscription: used to subscribe an observable and that can be unsubscribed once the task with observable is over
+	Operators: some methods (inspired by array methods) for different purpose, such as, piping the data in observable. examples: filter, map, tap, tapError, take etc.
+	Subject: used to store data and can be of 3 types: Subject, BehaviorSubject, ReplaySubject
+
+
+component life-cycle:
+A. creation and mounting:
+	constructor will be executed
+	"changes" event of component gets fired
+	"init" event of component gets fired
+
+B. updation phase:
+	"changes" event gets fired, if the component recives any data from parent component
+
+C. destruction phase:
+	"destroy" event gets fired
+
+event-name				interface-name				method-name
+-----------------------------------------------------------
+X								OnX						ngOnX
+
+Pipe:
+data transformation logic
+
+@Pipe({
+	name:'uppercase'
+})
+export class UppercasePipe implements PipeTransform{
+	transform(arg:any, ...args:any[]):any{
+		return arg.toLocaleUppercase()
+	}
+}
+
+
+
+fixed 1st argument | pipe-name : add-arg1 :add-arg2 : add-arg3:....
+----------------------------------------------------------------------
+p.title				  |uppercase
+p.title				  |lowercase
+p.salary           |currency   :'INR'      :'0-2'
+
+
+
 
 

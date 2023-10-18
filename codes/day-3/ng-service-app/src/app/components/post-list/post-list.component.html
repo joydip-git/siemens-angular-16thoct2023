@@ -1,14 +1,29 @@
-<h3>
-    List of Posts
-</h3>
+<ng-template #loadingTemplate>
+    <span>Loading...please wait</span>
+</ng-template>
 
-<div *ngFor="let p of posts">
-    <div>
-        <header>
-            <h4>{{p.title}}</h4>
-        </header>
-    </div>
-    <div>
-        {{p.body}}
+<ng-template #errorTemplate>
+    <span>{{errorMessage}}</span>
+</ng-template>
+
+<app-filter (filterValueChanged)="updateFilterText($event)"></app-filter>
+<br>
+<div *ngIf="isRequestComplete;else loadingTemplate">
+    <div *ngIf="errorMessage=='';else errorTemplate">
+        <div *ngIf="posts">
+            <h4>Displaying List of posts</h4>
+            <ol>
+                <li *ngFor="let p of (posts|postFilter:filterText)">
+                    <div>
+                        <header>
+                            <h4>{{p.title | uppercase}}</h4>
+                        </header>
+                    </div>
+                    <div>
+                        {{p.body}}
+                    </div>
+                </li>
+            </ol>
+        </div>
     </div>
 </div>

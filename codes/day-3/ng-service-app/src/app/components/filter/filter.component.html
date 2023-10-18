@@ -1,0 +1,4 @@
+<div>
+    <label for="txtFilter">Filter By Title: &nbsp;</label>
+    <input type="text" id="txtFilter" [value]="filterData" (keyup)="fireFilterTextChanged(txt.value)" #txt>
+</div>

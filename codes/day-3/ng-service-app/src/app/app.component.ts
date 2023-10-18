@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng-service-app';
+  showPosts = false
+  updateShowPosts() {
+    this.showPosts = !this.showPosts
+  }
 }

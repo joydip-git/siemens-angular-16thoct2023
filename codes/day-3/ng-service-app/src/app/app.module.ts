@@ -6,15 +6,21 @@ import { AppComponent } from './app.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostService } from './services/post.service';
 import { SERVICE_TOKEN, SERVICE_TYPE } from './config/constants';
+import { HttpClientModule } from '@angular/common/http';
+import { PostFilterPipe } from './pipes/post-filter.pipe';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponent
+    PostListComponent,
+    PostFilterPipe,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     //PostService

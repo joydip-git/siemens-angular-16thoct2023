@@ -1,23 +1,28 @@
 import { Post } from "./post"
 import { BehaviorSubject, Observable, of } from 'rxjs'
+
 /*
-function getData(): Observable<Post[]> | undefined {
-    let obs: Observable<Post[]> | undefined;
-    const request = new XMLHttpRequest()
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-            const jsonResponse = request.responseText
-            const posts = <Post[]>JSON.parse(jsonResponse)
-            obs = of(posts)
+class HttpClientService {
+    get<T>(): Observable<T> | undefined {
+        const storage = new BehaviorSubject<any>(undefined)
+        const obs: Observable<T> = storage.asObservable()
+
+        const request = new XMLHttpRequest()
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                const jsonResponse = request.responseText
+                const posts = <T[]>JSON.parse(jsonResponse)
+                storage.next(posts)
+            }
         }
+        request.open(
+            'GET',
+            'https://jsonplaceholder.typicode.com/posts',
+            true
+        )
+        request.send()
+        return obs
     }
-    request.open(
-        'GET',
-        'https://jsonplaceholder.typicode.com/posts',
-        true
-    )
-    request.send()
-    return obs
 }
 */
 
