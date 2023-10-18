@@ -24,3 +24,29 @@ Validation:
 										{ "password":"lowercase" }
 										{ "password":"digit" }
 										{ "password":"enter value" }
+
+
+Services and DI:
+---------------------------------
+a. how to create a service
+b. service registration
+c. service consumption
+
+Service provider registration:
+a. at the asset level (only that asset can access single instance of the service, no other assets from entire application can access that instance)
+b. at the feature module level (only assets registered with that feature module can share single instance of the service)
+c. at the root module level (all assets across application can share single instance of the service)
+
+custom token-based provider registration:
+providers:[{provide:'<token-name>', useClass:<service-class-name>}]
+
+DI:
+export class XComponent{
+	private svc:<service-class>;
+	constructor(@Inject('<token-name>') svc:<service-class>){
+		this.svc = svc
+	}
+}
+
+
+
