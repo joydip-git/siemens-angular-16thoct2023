@@ -48,5 +48,10 @@ export class XComponent{
 	}
 }
 
+HTTP requests from Angular Application:
+package: @angular/common/http
+module: HttpClientModule
+assets: service class => HttpClient
+
 
 

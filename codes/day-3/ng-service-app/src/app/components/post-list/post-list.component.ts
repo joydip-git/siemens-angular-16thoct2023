@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { SERVICE_TOKEN } from 'src/app/config/constants';
 import { Post } from 'src/app/models/post';
+import { ServiceContract } from 'src/app/models/service-contract';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -17,8 +18,8 @@ export class PostListComponent {
   posts: Post[];
 
   //private postSvc: PostService;
-  constructor(@Inject(SERVICE_TOKEN) private postSvc: PostService) {
+  constructor(@Inject(SERVICE_TOKEN) private postSvc: ServiceContract<Post>) {
     //this.postSvc = postSvc
-    this.posts = this.postSvc.getPosts()
+    this.posts = this.postSvc.getAll()
   }
 }
