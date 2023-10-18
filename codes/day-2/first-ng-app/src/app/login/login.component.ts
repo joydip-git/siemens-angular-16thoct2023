@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { passwordValidator } from '../validators/password-validator';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,11 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 })
 export class LoginComponent {
   // userName = new FormControl('enter username', Validators.required)
-  // password = new FormControl('enter password', Validators.required)
+  // password = new FormControl('enter password', [Validators.required, passwordValidator])
 
   // loginFrm = new FormGroup({
   //   userName: new FormControl('enter username',Validators.required),
-  //   password: new FormControl('enter password', Validators.required)
+  //   password: new FormControl('enter password', [Validators.required, passwordValidator])
   // })
 
   loginFrm: FormGroup;
@@ -20,7 +21,7 @@ export class LoginComponent {
   constructor(private builder: FormBuilder) {
     this.loginFrm = this.builder.group({
       userName: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, passwordValidator]]
     })
   }
 

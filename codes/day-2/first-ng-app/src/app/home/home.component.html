@@ -8,17 +8,43 @@
             First: &nbsp;
         </label>
         <!-- <input type="number" id="txtFirst" [value]="firstValue" (keyup)="updateFirstValue(+firstTxt.value)" #firstTxt> -->
-        <input type="number" id="txtFirst" name="firstInput" [(ngModel)]="firstValue">
+        <input type="number" id="txtFirst" name="firstInput" [(ngModel)]="firstValue" #first="ngModel" required
+            max="100">
+    </div>
+    <div *ngIf="first?.errors">
+        <div *ngIf="first?.errors?.['required'] && (first?.touched || first?.dirty)">
+            <span>please enter first value</span>
+        </div>
+        <div *ngIf="first?.errors?.['max'] && (first?.touched || first?.dirty)">
+            <span>
+                value should not be more than {{first?.errors?.['max']?.max}}, actual value entered by you is
+                {{first?.errors?.['max']?.actual}}
+            </span>
+        </div>
     </div>
     <div>
         <label for="txtSecond">
             Second: &nbsp;
         </label>
         <!-- <input type="number" id="txtSecond" [value]="secondValue" (keyup)="updateSecondValue(+secondTxt.value)" #secondTxt> -->
-        <input type="number" id="txtSecond" [(ngModel)]="secondValue" name="secondInput">
+        <input type="number" id="txtSecond" [(ngModel)]="secondValue" name="secondInput" #second="ngModel" required
+            min="1">
     </div>
+
+    <div *ngIf="second?.errors">
+        <div *ngIf="second?.errors?.['required'] && (second?.touched || second?.dirty)">
+            <span>please enter second value</span>
+        </div>
+        <div *ngIf="second?.errors?.['min'] && (second?.touched || second?.dirty)">
+            <span>
+                value should not be less than {{second?.errors?.['min']?.min}}, actual value entered by you is
+                {{second?.errors?.['min']?.actual}}
+            </span>
+        </div>
+    </div>
+
     <div>
-        <input type="button" value="Add" (click)="submitValues(frm)">
+        <input type="button" value="Add" (click)="submitValues(frm)" [disabled]="frm.invalid">
     </div>
 </form>
 

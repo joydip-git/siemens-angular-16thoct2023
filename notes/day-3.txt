@@ -1,0 +1,26 @@
+Validation:
+	Angular provides validator functions:
+	required, min, max, minLength, maxLength, email, pattern etc.
+	these validator functions belong to a class: Validators
+
+	any validator function should be of type: ValidatorFn
+	interface ValidatorFn {
+		(control:AbstractControl) => ValidationErrors|null;
+	}	
+
+	interface ValidationErrors{
+		[propName:string]:any;
+	}
+
+	validator function			ValidationErrors object set to "errors" property of control
+	Validators.required =>		 { required:true}
+	Validators.min(10)	 =>    { min:{ actual:6, min:10}}
+	Validators.max(100) =>     { max: {actual:120, max:100} }
+	.......................................................
+
+
+	passwordValidator   =>		{ "password":`Length is ${value.length}, where as min length should be:6 and maximum length should be: 10`}
+										{ "password":"uppercase" }
+										{ "password":"lowercase" }
+										{ "password":"digit" }
+										{ "password":"enter value" }

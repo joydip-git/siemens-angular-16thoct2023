@@ -14,10 +14,17 @@
         <!-- <input type="password" id="txtPassword" [formControl]="password"> -->
         <input type="password" id="txtPassword" formControlName="password">
     </div>
+
     <div *ngIf="password?.errors">
+
         <div *ngIf="password?.errors?.['required'] && (password?.touched || password?.dirty)">
             <span>please enter password</span>
         </div>
+
+        <div *ngIf="password?.errors?.['password'] && (password?.touched || password?.dirty)">
+            <span>{{ password?.errors?.['password']}}</span>
+        </div>
+
     </div>
     <div>
         <input type="submit" value="Login" [disabled]="!loginFrm.valid">
