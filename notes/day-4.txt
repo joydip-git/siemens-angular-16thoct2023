@@ -45,6 +45,10 @@
 	b. passing data from parent to nested: through data binding
 
 9. modules:
+
+
+10. Routing:
+	
 	
 
 
