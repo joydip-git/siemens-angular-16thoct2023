@@ -10,18 +10,15 @@
 <br>
 <div *ngIf="isRequestComplete;else loadingTemplate">
     <div *ngIf="errorMessage=='';else errorTemplate">
+        <div>
+            <button type="button" (click)="updatePostCreator()">Update Created By</button>
+        </div>
+        <br>
         <div *ngIf="posts">
             <h4>Displaying List of posts</h4>
             <ol>
                 <li *ngFor="let p of (posts|postFilter:filterText)">
-                    <div>
-                        <header>
-                            <h4>{{p.title | uppercase}}</h4>
-                        </header>
-                    </div>
-                    <div>
-                        {{p.body}}
-                    </div>
+                    <app-post-info [postData]="p"></app-post-info>
                 </li>
             </ol>
         </div>

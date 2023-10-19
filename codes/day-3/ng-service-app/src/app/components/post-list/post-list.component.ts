@@ -32,6 +32,15 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.filterText = value
   }
 
+  updatePostCreator() {
+    this.posts?.forEach(
+      p => {
+        if (p.userId == 1)
+          p.userId = 2
+      }
+    )
+    console.log(this.posts)
+  }
   ngOnDestroy(): void {
     console.log("destroy...")
     this.postSub?.unsubscribe()

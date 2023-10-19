@@ -1,0 +1,53 @@
+1. Component:
+	it is a type of directive, with design, 
+	decorated with @Component
+	you should pass Component metadata to @Component() decorator function
+	they are exposed like a custome HTML tag 
+	they can have properties exposed to parent component as events as well as attributes
+	they will have lifecycle and corresponding events, such as, init, changes, destroy etc.
+	components must be registered with a module
+	if you want to expose a component (i.e., want to use the component in another component registered with other module, other than the module scope where it is registered), you must mention the name of component in the module's "exports" array (*)
+	component = template/design/view + code + metadata
+
+2. Service and Dependency injection
+	service classes do contain any type reusable piece of logic
+	they are created as any regular class in Angular but can be decorated with @Injectable() in case the service requires DI of another service
+	a service provide is required to be registered for the service to be available for DI
+	service provider can be registered with the same name as that of the service itself or through custom token-based provider configuration
+	if the service provider is registered with the service name itself, then during DI through constructor just declare a parameter of type that service
+	if the service provider is registered through custom token-based provider configuration, then during DI through constructor, you need to decorate the parameter of the constructor with @Inject() decoartor and pass the token name in the @Inject decorator
+	Angular maintains different injectors (the one who does the DI of service) at component, feature module and root module level
+	
+3. HTTP requests
+	use HtppClient (bulilt-in service class) from HttpClientModule, and use its methods like get(), post(), put(), delete() etc. to make RESTful API requests
+	in order to avail DI of that class, import the HttpClientModule, since the module will export the provider for the service
+	all methods of HttpClient returns an Observable object
+
+4. RxJS:
+	Observable, Observer, Subject, BehaviorSubject etc.
+	map, filter, tap etc. to be passed to pipe() method of the Observable
+	Oservable can be subscribed through a subscription, which must be released later point if time, otherwise will cause memory leak
+
+5. Directives:
+	structural (*ngIf, *ngFor, *ngSwitch), attribute (ngModel, ngForm, formControl, formControlName etc.), component
+	creating custom directive for validation in template driven approach
+
+6. Forms:
+	a. template-driven (FormsModule - ngModel, ngForm, required, min, max, pattern, email directives, FormBuilder - service)
+	b. reactive (ReactiveFormsModule - formGroup, formControl, formControlName)
+
+7. Pipe
+	data transformation: filtering, sorting, conversion etc.	
+	PipeTransform interface (transform metod signature), Pipe decorator
+
+8. Passing data between parent and nested component
+	a. passing data from nested to parent: through event binding
+	b. passing data from parent to nested: through data binding
+
+9. modules:
+	
+
+
+
+	
+	

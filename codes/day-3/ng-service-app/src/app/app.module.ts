@@ -9,13 +9,15 @@ import { SERVICE_TOKEN, SERVICE_TYPE } from './config/constants';
 import { HttpClientModule } from '@angular/common/http';
 import { PostFilterPipe } from './pipes/post-filter.pipe';
 import { FilterComponent } from './components/filter/filter.component';
+import { PostInfoComponent } from './components/post-info/post-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
     PostFilterPipe,
-    FilterComponent
+    FilterComponent,
+    PostInfoComponent
   ],
   imports: [
     BrowserModule,

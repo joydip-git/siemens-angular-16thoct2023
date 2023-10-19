@@ -1,0 +1,16 @@
+<div *ngIf="postData">
+    <div>
+        <div>
+            <header>
+                <h4>{{postData.title | uppercase}}</h4>
+                <h6>Created by: {{postData.userId}}</h6>
+            </header>
+        </div>
+        <div>
+            {{postData.body}}
+        </div>
+    </div>
+    <div>
+        <button type="button">Update</button>
+    </div>
+</div>
