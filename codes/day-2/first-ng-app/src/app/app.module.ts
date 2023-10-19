@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from './login/login.component';
+import { LoginTemplateDrivenComponent } from './login-template-driven/login-template-driven.component';
+import { PasswordValidatorDirective } from "./directives/password-validator.directive";
 
 @NgModule({
   //here you register components, directives and pipes
-  declarations: [AppComponent, HomeComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, LoginTemplateDrivenComponent, PasswordValidatorDirective],
   //you register ONLY services here
   providers: [],
   //you register ONLY modules (built-in angular modules and application feature modules) here

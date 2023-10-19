@@ -1,0 +1,50 @@
+<form ngForm #frm="ngForm">
+
+    <div>
+        <label for="txtUserName">UserName: &nbsp; </label>
+        <input type="text" id="txtUserName" [(ngModel)]="userName" name="userName" required email #user="ngModel">
+    </div>
+
+    <div *ngIf="user.errors">
+        <div *ngIf="(user.dirty || user.touched) && user.errors?.['required']">
+            <span>enter user name</span>
+        </div>
+        <div *ngIf="(user.dirty || user.touched) && user.errors?.['email']">
+            <span>enter user name in email format</span>
+        </div>
+    </div>
+
+
+    <div>
+        <label for="txtPassword">Password: &nbsp; </label>
+        <input type="password" id="txtPassword" [(ngModel)]="password" name="password" required passwordStrength
+            #pwd="ngModel">
+    </div>
+
+    <div *ngIf="pwd?.errors">
+        <div *ngIf="(pwd?.dirty || pwd?.touched) && pwd?.errors?.['required']">
+            <span>enter password</span>
+        </div>
+        <div *ngIf="(pwd?.dirty || pwd.touched) && pwd?.errors?.['password']">
+            <span>
+                {{ pwd?.errors?.['password'] }}
+            </span>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" value="Login" [disabled]="frm.invalid">
+    </div>
+</form>
+<!--
+
+    new LoginTemplateDrivenComponent([new RequiredDirective(), new EmailDirective()])
+
+    new FormGroup({
+        userName: new FormControl(),
+        password: new FormControl(new RequiredDirective())
+    })
+
+    new RequiredDirective().validate(frmCtrl)
+
+-->
