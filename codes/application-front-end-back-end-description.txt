@@ -2,7 +2,7 @@ Application directory structure:
 
 Product Management System
 
-a. displays a list of products through a component. the component displays product-name, product-price, rating and image out of all the product properties
+a. displays a list of products through a component. the component displays product name, product price, rating and image out of all the product properties
 b. the component displaying list of products, will also have a facility to delete record by a click of a button
 c. if you click on the image of any product in that component, displayig list of products, you should be redirected to another component which will render the details of that selected product (all properties of the product)
 d. on this component, displaying a product deyail, an edit button must be placed, clicking which one should be redirected to another component where the same product details will be displayed and can be edited and saved too in the backend. after successful edit, one must be redirected the component displaying the list of component, where the updated product details will be displayed
@@ -65,10 +65,10 @@ app
 				product.service.ts
 
 			directives (folder)
-				password-validator.directive.ts
+				
 
 			validators (folder)
-				password-validator.ts
+				
 
 			authentication (folder for "authentication" feature module)
 				authentication.module.ts
@@ -84,42 +84,6 @@ app
 					registration.component.ts
 					registration.component.css
 					registration.component.html
-				
-
-
-
-Backend description:
-
-URL									 		METHOD		DATA				RESPONSE
-----------------------------------------------------------------------------------------
-products:
-
-get all products:
-http://127.0.0.1:3003/products 			GET		NA			{"message":"", "data":[{},{},..] }
-
-get a single product by id:
-http://127.0.0.1:3003/products/{id} 	GET		id			{"message":"", "data":{} }
-http://127.0.0.1:3003/products/{id} 	GET		id			{"message":"", "data":null }
-
-adding a new product in the backend:
-http://127.0.0.1:3003/products 			POST		product	{"message":"", "data":[{},{},..] }
-http://127.0.0.1:3003/products 			POST		product	{"message":"", "data":null }
-
-updating an existing product in the backend:
-http://127.0.0.1:3003/products/{id}		PUT	product,id	{"message":"", "data":[{},{},..] }
-http://127.0.0.1:3003/products/{id}		PUT	product,id	{"message":"", "data":null }
-
-deleting an existing product in the backend:
-http://127.0.0.1:3003/products/{id} 	DELETE	id			{"message":"", "data":[{},{},..] }
-http://127.0.0.1:3003/products/{id} 	DELETE	id			{"message":"", "data":null }
-
-auth:
-
-http://127.0.0.1:3003/auth/register		POST		user		{"message":"", data:{} }
-http://127.0.0.1:3003/auth/register		POST		user		{"message":"", data:null }
-
-http://127.0.0.1:3003/auth/authenticate POST		user		{"message":"", data:"" }
-http://127.0.0.1:3003/auth/authenticate POST		user		{"message":"", data:null }
 
 Application routes:
 
@@ -139,3 +103,39 @@ home => HomeComponent
 /   => redirection to home (if base route)
 
 anything else => PageNotFoundComponent
+				
+
+
+
+Backend description:
+
+URL									 		METHOD		DATA				RESPONSE
+----------------------------------------------------------------------------------------
+products:
+
+get all products:
+http://127.0.0.1:3003/products 				GET			NA				{ "message":"", "data":[{},{},..] }
+
+get a single product by id:
+http://127.0.0.1:3003/products/{id} 		GET			id				{ "message":"", "data": {} }
+http://127.0.0.1:3003/products/{id} 		GET			id				{ "message":"", "data": null }
+
+adding a new product in the backend:
+http://127.0.0.1:3003/products 				POST		product			{ "message":"", "data": [{},{},..] }
+http://127.0.0.1:3003/products 				POST		product			{ "message":"", "data": null }
+
+updating an existing product in the backend:
+http://127.0.0.1:3003/products/{id}			PUT			product,id		{ "message":"", "data": [{},{},..] }
+http://127.0.0.1:3003/products/{id}			PUT			product,id		{ "message":"", "data": null }
+
+deleting an existing product in the backend:
+http://127.0.0.1:3003/products/{id} 		DELETE		id				{	"message":"", "data": [{},{},..] }
+http://127.0.0.1:3003/products/{id} 		DELETE		id				{	"message":"", "data": null }
+
+auth:
+
+http://127.0.0.1:3003/auth/register			POST		user			{	"message":"", data:	{} }
+http://127.0.0.1:3003/auth/register			POST		user			{	"message":"", data:	null }
+
+http://127.0.0.1:3003/auth/authenticate 	POST		user			{	"message":"", data:	"" }
+http://127.0.0.1:3003/auth/authenticate 	POST		user			{	"message":"", data:	null }
