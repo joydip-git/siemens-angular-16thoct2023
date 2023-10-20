@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordValidatorDirective } from './directives/password-validator.directive';
 import { RouterModule, Routes } from '@angular/router';
+import { AUTH_SERVICE } from 'src/app/config/constants';
 
 const authRoutes: Routes = [
   {
@@ -38,6 +39,12 @@ const authRoutes: Routes = [
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule.forChild(authRoutes)
   ],
-  exports: [RegistrationComponent]
+  exports: [RegistrationComponent],
+  providers: [
+    {
+      provide: AUTH_SERVICE.SERVICE_TOKEN,
+      useClass: AUTH_SERVICE.SERVICE_TYPE
+    }
+  ]
 })
 export class AuthenticationModule { }
