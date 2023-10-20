@@ -1,0 +1,47 @@
+<form ngForm #frm="ngForm" (submit)="submit()">
+    <fieldset>
+        <legend>Register:</legend>
+
+
+        <div class="form-group">
+            <label class="form-label mt-4" for="txtUserName">UserName: &nbsp; </label>
+            <input type="text" id="txtUserName" [(ngModel)]="username" name="username" required email #user="ngModel"
+                class="form-control">
+        </div>
+
+        <div *ngIf="user.errors" class="invalid-feedback">
+            <div *ngIf="(user.dirty || user.touched) && user.errors?.['required']">
+                <span>enter user name</span>
+            </div>
+            <div *ngIf="(user.dirty || user.touched) && user.errors?.['email']">
+                <span>enter user name in email format</span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="form-label mt-4" for="txtPassword">Password: &nbsp; </label>
+            <input type="password" id="txtPassword" [(ngModel)]="password" name="password" required passwordStrength
+                class="form-control" #pwd="ngModel">
+        </div>
+
+        <div *ngIf="pwd?.errors" class="invalid-feedback">
+            <div *ngIf="(pwd?.dirty || pwd?.touched) && pwd?.errors?.['required']">
+                <span>enter password</span>
+            </div>
+            <div *ngIf="(pwd?.dirty || pwd.touched) && pwd?.errors?.['password']">
+                <span>
+                    {{ pwd?.errors?.['password'] }}
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="center-style">
+            <input type="submit" value="Register" [disabled]="frm.invalid" class="btn btn-primary">
+        </div>
+    </fieldset>
+</form>
+<br>
+<div *ngIf="errorMessage!=''">
+    <span>{{errorMessage}}</span>
+</div>

@@ -1,0 +1,51 @@
+<ng-template #loadingTemplate>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...please wait</span>
+        </div>
+    </div>
+</ng-template>
+<ng-template #errorTemplate>
+    <span>{{errorMessage}}</span>
+</ng-template>
+
+
+<app-filter (filterValueChanged)="updateFilterText($event)"></app-filter>
+<br>
+<div *ngIf="isRequestComplete;else loadingTemplate">
+    <div *ngIf="errorMessage=='';else errorTemplate">
+        <table class="table table-hover" *ngIf="products && products.length>0">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="row">Image</th>
+                    <th scope="row" (click)="updateSortText('name')">
+                        Name
+                    </th>
+                    <th scope="row" (click)="updateSortText('price')">
+                        Price
+                    </th>
+                    <th scope="row" (click)="updateSortText('rating')">
+                        Rating
+                    </th>
+                    <th scope="row">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-success" *ngFor="let p of ((products|filterProduct:filterText)|sortProduct:sortText)">
+                    <td>
+                        <img [src]="p.imageUrl" alt="NA" [title]="p.productName"
+                            [routerLink]="['/products/view',p.productId]">
+                    </td>
+                    <td>{{p.productName|uppercase}}</td>
+                    <td>{{p.price|currency:'INR'}}</td>
+                    <td>{{p.starRating}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="deleteProduct(p.productId)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

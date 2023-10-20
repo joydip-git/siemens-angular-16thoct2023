@@ -1,0 +1,58 @@
+GET http://127.0.0.1:3003/products  
+
+###
+GET http://127.0.0.1:3003/products/1
+
+###
+GET http://127.0.0.1:3003/products/10
+
+###
+POST http://127.0.0.1:3003/products
+Content-Type: application/json
+
+{
+        "productId": 10,
+        "productName": "Leaf Rake",
+        "productCode": "GDN-0011",
+        "releaseDate": "March 19, 2016",
+        "description": "Leaf rake with 48-inch wooden handle.",
+        "price": 100,
+        "starRating": 3.7,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+}
+
+###
+PUT http://127.0.0.1:3003/products/10
+Content-Type: application/json
+
+{
+        "productId": 10,
+        "productName": "Leaf Rake",
+        "productCode": "GDN-0011",
+        "releaseDate": "March 19, 2016",
+        "description": "Leaf rake with 48-inch wooden handle.",
+        "price": 150,
+        "starRating": 4,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+}
+
+###
+DELETE http://127.0.0.1:3003/products/10
+
+###
+POST http://127.0.0.1:3003/auth/register
+Content-Type: application/json
+
+{
+    "username":"abcd@gmail.com",
+    "password":"Abcd@123"
+}
+
+###
+POST http://127.0.0.1:3003/auth/authenticate
+Content-Type: application/json
+
+{
+    "username":"abcd@gmail.com",
+    "password":"Abcd@123"
+}

@@ -90,16 +90,15 @@ Application routes:
 products module:
 products => ProductListComponent
 products/view/1 => ProductDetailComponent
-products/update/1 => UpdateProductComponent
+products/update => UpdateProductComponent
 products/add => AddProductComponent
 
 authentication module:
 auth/login => LoginComponent
-auth/registern => RegisterComponent
+auth/register => RegistrationComponent
 
 common:
 home => HomeComponent
-	   => HomeComponent
 /   => redirection to home (if base route)
 
 anything else => PageNotFoundComponent

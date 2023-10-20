@@ -1,0 +1,5 @@
+https://www.techtarget.com/searchenterpriseai/definition/generative-AI
+https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety
+
+https://www.techtarget.com/searchenterpriseai/definition/prompt-engineering
+https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api

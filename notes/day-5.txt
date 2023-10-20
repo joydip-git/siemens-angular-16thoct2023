@@ -1,0 +1,26 @@
+Routing:
+package: @angular/router
+module: RouterModule
+
+class
+Route => path and component
+type Routes = Route[]
+
+RouterModule.forRoot/forChild(<array-of-route-objects>)
+
+built-in service class:
+Router, ActivatedRoute etc.
+
+<nav>
+	<a href="/home">Home</a>
+
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;
+
+	<a href="/products">Products</a>
+
+	&nbsp;	&nbsp;	&nbsp;	&nbsp;
+
+	<a href="/products/add">Add Product</a>
+</nav>
+
+

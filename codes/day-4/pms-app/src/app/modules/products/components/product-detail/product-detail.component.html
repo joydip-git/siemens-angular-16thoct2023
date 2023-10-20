@@ -1,0 +1,26 @@
+<ng-template #loadingTemplate>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...please wait</span>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+    <span>{{errorMessage}}</span>
+</ng-template>
+
+<div *ngIf="isRequestComplete;else loadingTemplate">
+    <div *ngIf="errorMessage=='';else errorTemplate">
+        <div *ngIf="product">
+            <h3>Details of {{product.productName}}</h3>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div>
+    <button type="button" class="btn btn-primary" (click)="editProduct()">
+        Edit
+    </button>
+</div>

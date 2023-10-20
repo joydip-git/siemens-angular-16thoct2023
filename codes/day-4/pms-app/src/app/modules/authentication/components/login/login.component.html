@@ -1,0 +1,43 @@
+<form (submit)="submit()" [formGroup]="loginFrm">
+    <fieldset>
+        <legend>Login:</legend>
+        <div class="form-group">
+            <label for="txtUserName" class="form-label mt-4">UserName: &nbsp; </label>
+            <input type="email" class="form-control" id="txtUserName" formControlName="username">
+        </div>
+
+        <div *ngIf="username?.errors" class="invalid-feedback">
+            <div *ngIf="username?.errors?.['required'] && (username?.touched || username?.dirty)">
+                <span>please enter user name</span>
+            </div>
+            <div *ngIf="username?.errors?.['email'] && (username?.touched || username?.dirty)">
+                <span>please enter user name in email format</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="txtPassword" class="form-label mt-4">Password: &nbsp; </label>
+            <input type="password" id="txtPassword" formControlName="password" class="form-control">
+        </div>
+
+        <div *ngIf="password?.errors" class="invalid-feedback">
+
+            <div *ngIf="password?.errors?.['required'] && (password?.touched || password?.dirty)">
+                <span>please enter password</span>
+            </div>
+
+            <div *ngIf="password?.errors?.['password'] && (password?.touched || password?.dirty)">
+                <span>{{ password?.errors?.['password']}}</span>
+            </div>
+
+        </div>
+        <br>
+        <div class="center-style">
+            <input type="submit" value="Login" [disabled]="!loginFrm.valid" class="btn btn-primary">
+        </div>
+    </fieldset>
+</form>
+<br>
+<div *ngIf="errorMessage!=''">
+    <span>{{errorMessage}}</span>
+</div>
