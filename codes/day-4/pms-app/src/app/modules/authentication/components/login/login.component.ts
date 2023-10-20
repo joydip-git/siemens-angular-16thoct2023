@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AUTH_SERVICE } from 'src/app/config/constants';
 import { AuthServiceContract } from '../../models/auth-service-contract';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnDestroy {
   private loginSubscription?: Subscription;
 
   constructor(
+    private tokenSvc: TokenService,
     private builder: FormBuilder,
     @Inject(AUTH_SERVICE.SERVICE_TOKEN) private authSvc: AuthServiceContract
   ) {
@@ -45,7 +47,8 @@ export class LoginComponent implements OnDestroy {
         if (resp.data != null) {
           this.errorMessage = ''
           //save the token
-          localStorage.setItem('token', resp.data)
+          //localStorage.setItem('token', resp.data)
+          this.tokenSvc.saveToken(resp.data)
         } else {
           this.errorMessage = resp.message
         }

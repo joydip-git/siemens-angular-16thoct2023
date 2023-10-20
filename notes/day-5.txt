@@ -23,4 +23,6 @@ Router, ActivatedRoute etc.
 	<a href="/products/add">Add Product</a>
 </nav>
 
+authorization:'bearer <token>'
+
 
